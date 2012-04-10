@@ -1,0 +1,15 @@
+#container{
+	margin-top: 60px;
+}
+
+body{
+	background-color: #F0F0F0;
+}
+
+h1{
+	color: white;
+}
+
+h1:hover{
+	color: #6CA9EB;
+}
