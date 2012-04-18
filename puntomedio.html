@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title> Algoritmo Bresenham en HTML5 Canvas </title>
-<SCRIPT TYPE="text/javascript" src="bresenham.js"></SCRIPT>
+<title> Algoritmo Punto Medio en HTML5 Canvas </title>
+<SCRIPT TYPE="text/javascript" src="puntomedio.js"></SCRIPT>
 <SCRIPT TYPE="text/javascript" src="dda.js"></SCRIPT>
 <SCRIPT TYPE="text/javascript" src="drawing.js"></SCRIPT>
 <SCRIPT TYPE="text/javascript" src="jquery-1.7.2.js"></SCRIPT>
@@ -25,35 +25,29 @@
 		width=parseInt(canvas.getAttribute("width"));
 		height=parseInt(canvas.getAttribute("height"));
 		initializecanvas(context);
-		validateallbresenham();
+		validateall();
 		table= $("#tablebody");
 		$("#x1").blur(function(){
-			validateallbresenham();
+			validateallmedio();
 			});
 		$("#x1").keyup(function(){
-			validateallbresenham();
+			validateallmedio();
 			});
 
-		$("#x2").blur(function(){
-			validateallbresenham();
+		$("#radio").blur(function(){
+			validateallmedio();
 			});
-		$("#x2").keyup(function(){
-			validateallbresenham();
+		$("#radio").keyup(function(){
+			validateallmedio();
 			});
 
 		$("#y1").blur(function(){
-			validateallbresenham();
+			validateallmedio();
 			});
 		$("#y1").keyup(function(){
-			validateallbresenham();
+			validateallmedio();
 			});
 
-		$("#y2").blur(function(){
-			validateallbresenham();
-			});
-		$("#y2").keyup(function(){
-			validateallbresenham();
-			});
 		$("#erasebutton").click(function(){
 		initializecanvas(context);
 		initializeTable(table);
@@ -61,13 +55,9 @@
 		})
 		$("#submitbutton").click(function(){
 		x1=parseInt($("#x1").val());
-		x2=parseInt($("#x2").val());
 		y1=parseInt($("#y1").val());
-		y2=parseInt($("#y2").val());
 		point1= new point(x1,y1);
-		point2= new point(x2,y2);
-		console.log(x1);
-		points = bresenham(point1,point2);
+		points = puntomedio(parseInt($("#radio").val()),point1);
 		draw(points,context);
 		initializeTable(table);
 		addToTable(table,points);
@@ -79,7 +69,7 @@
 <header class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="container">
-			<H1>Algoritmo Bresenham</H1>
+			<H1>Algoritmo Punto Medio en HTML5 Canvas</H1>
 		</div>
 	</div>
 </header>
@@ -96,10 +86,8 @@
 				<input type="text" id="x1" class="span3 control-group" value="Introduzca un numero"></input>
 				<label>Ingrese la coordenada Y del primer punto</label>
 				<input type="text" id="y1" class="span3" value="Introduzca un numero"></input>
-				<label>Ingrese la coordenada X del segundo punto</label>
-				<input type="text" id="x2" class="span3" value="Introduzca un numero"></input> 
-				<label>Ingrese la coordenada Y del segundo punto</label>
-				<input type="text" id="y2" class="span3" value="Introduzca un numero"></input>
+				<label>Ingrese el Radio</label>
+				<input type="text" id="radio" class="span3" value="Introduzca un numero"></input> 
 				<button id="submitbutton" class="btn btn-primary"><i class="icon-pencil icon-white"></i> Dibujar</button>
 				<button id="erasebutton" class="btn btn-danger"><i class="icon-trash icon-white"></i> Borrar</button>
 			</div>
