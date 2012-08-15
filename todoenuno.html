@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Todo en uno HTML5 Canvas </title>
+<SCRIPT TYPE="text/javascript" src="Elipse.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" src="dda.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" src="puntomedio.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" src="drawing.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" src="jquery-1.7.2.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" src="custom.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" src="dynamictable.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" src="todoenuno.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" src="2DTransforms.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" src="mousemanager.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" src="drawmanager.js"></SCRIPT>
+<link rel="stylesheet" href="css/bootstrap.css"></link>
+<link rel="stylesheet" href="css/custom.css"></link>
+</head>
+<body>
+<header class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<H1>Todo en uno en HTML5 Canvas</H1>
+		</div>
+	</div>
+</header>
+<div class="container" id="container">
+	<div class="row">
+		<div class="span6" id="canvasdiv">
+			<canvas width=400 height=280 id="canvas" class="well">
+			</canvas>
+		</div>
+		<div class="span6">
+			<div class="well">
+				<h2 style="text-align:center;"> Seleccione que desea Dibujar</h2>
+				<select name="figura" id="figura">
+					<option value="linea">Linea</option>
+					<option value="circulo">Circulo o Elipse</option>
+				</select>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span6 offset3 well" style="text-align:center;">
+			<h2 class="center">Puntos Calculados</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>X</th>
+						<th>Y</th>
+					</tr>
+				</thead>
+				<tbody id="tablebody">
+					<!-- Aqui va el contenido de la tabla -->
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</body>
+</html>

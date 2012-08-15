@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Transformaciones 2D en HTML5 Canvas </title>
+<SCRIPT TYPE="text/javascript" src="Elipse.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" src="2DTransforms.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" src="dda.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" src="drawing.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" src="jquery-1.7.2.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" src="custom.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" src="dynamictable.js"></SCRIPT>
+<link rel="stylesheet" href="css/bootstrap.css"></link>
+<link rel="stylesheet" href="css/custom.css"></link>
+<SCRIPT TYPE="text/javascript">
+	var canvas;
+	var context;
+	var width;
+	var height;
+	var data;
+	var points=[];
+	var table;
+	$(document).ready(function(){
+		table= $("#pointtable");
+		canvas=document.getElementById("canvas");
+		context=canvas.getContext("2d");
+		width=parseInt(canvas.getAttribute("width"));
+		height=parseInt(canvas.getAttribute("height"));
+		initializecanvas(context);
+		point1= new point(20,30);
+		points = puntomedio(40,70,point1);
+		draw(points,context);
+		validateall();
+		table= $("#tablebody");
+		$("#x1").blur(function(){
+			validatetras();
+			});
+		$("#x1").keyup(function(){
+			validatetras();
+			});
+
+		$("#y1").blur(function(){
+			validatetras();
+			});
+		$("#y1").keyup(function(){
+			validatetras();
+			});
+
+		$("#erasebutton").click(function(){
+		initializecanvas(context);
+		point1= new point(20,30);
+		points = puntomedio(40,70,point1);
+		draw(points,context);
+		initializeTable(table);
+		return false;
+		})
+		$("#submitbutton").click(function(){
+		angulo=parseInt($("#x1").val());
+		y1=parseInt($("#y1").val());
+		dpoints = rotate(points,angulo);
+		initializecanvas(context);
+		draw(dpoints,context);
+		initializeTable(table);
+		points=dpoints;
+		addToTable(table,points);
+		});
+
+	});
+</SCRIPT>
+</head>
+<body>
+<header class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<H1>Transformaciones 2D en HTML5 Canvas </H1>
+		</div>
+	</div>
+</header>
+<div class="container" id="container">
+	<div class="row">
+		<div class="span6" id="canvasdiv">
+			<canvas width=400 height=280 id="canvas" class="well">
+			</canvas>
+		</div>
+		<div class="span6">
+			<div class="well">
+				<h2 style="text-align:center;"> Introducir Coordenadas</h2>
+				<label>Ingrese el vector de traslacion X </label>
+				<input type="text" id="x1" class="span3 control-group" value="Introduzca un numero"></input>
+				<label>Ingrese el vector de traslacion Y</label>
+				<input type="text" id="y1" class="span3" value="Introduzca un numero"></input>
+				<button id="submitbutton" class="btn btn-primary"><i class="icon-pencil icon-white"></i> Dibujar</button>
+				<button id="erasebutton" class="btn btn-danger"><i class="icon-trash icon-white"></i> Borrar</button>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span6 offset3 well" style="text-align:center;">
+			<h2 class="center">Puntos Calculados</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>X</th>
+						<th>Y</th>
+					</tr>
+				</thead>
+				<tbody id="tablebody">
+					<!-- Aqui va el contenido de la tabla -->
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</body>
+</html>

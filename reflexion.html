@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Reflexion de un Cuadrado en HTML5 Canvas</title>
+<SCRIPT TYPE="text/javascript" src="puntomedio.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" src="bresenham.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" src="dda.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" src="drawing.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" src="jquery-1.7.2.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" src="custom.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" src="dynamictable.js"></SCRIPT>
+<link rel="stylesheet" href="css/bootstrap.css"></link>
+<link rel="stylesheet" href="css/custom.css"></link>
+<SCRIPT TYPE="text/javascript" src="js/reflexion.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" src="js/reflexionvalidate.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" src="js/square.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" src="2DTransforms.js"></SCRIPT>
+</head>
+<body>
+<header class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<H1>Reflexion de un Cuadrado en HTML5 Canvas</H1>
+		</div>
+	</div>
+</header>
+<div class="container" id="container">
+	<div class="row">
+		<div class="span6" id="canvasdiv">
+			<canvas width=400 height=280 id="canvas" class="well">
+			</canvas>
+		</div>
+		<div class="span6">
+			<div class="well" id="dibujar">
+				<h2 style="text-align:center;"> Introducir Coordenadas</h2>
+				<label>Ingrese la coordenada X del primer punto</label>
+				<input type="text" id="x" class="span3 control-group" value="Introduzca un numero"></input>
+				<label>Ingrese la coordenada Y del primer punto</label>
+				<input type="text" id="y" class="span3" value="Introduzca un numero"></input>
+				<label>Ingrese el largo de lo lados</label>
+				<input type="text" id="size" class="span3" value="Introduzca un numero"></input> 
+				<button id="drawbutton" class="btn btn-primary"><i class="icon-pencil icon-white"></i> Dibujar</button>
+			</div>
+			<div class="well" id="reflection" style="display:none;">
+				<h2 style="text-align:center;"> Escalar Figura </h2>
+				<label>Seleccione el tipo de Reflexion</label>
+				<select  id="reflexselect" class="span3">
+					<option value="Horizontal"> Horizontal </option>
+					<option value="Vertical"> Vertical </option>
+					<option value="Origen"> Con el Origen </option>
+				</select>
+				<button id="reflexbutton" class="btn btn-primary"><i class="icon-pencil icon-white"></i>Reflejar</button>
+			</div>
+			
+
+		</div>
+	</div>
+	<div class="row">
+		<div class="span6 offset3 well" style="text-align:center;">
+			<h2 class="center">Puntos Calculados</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>X</th>
+						<th>Y</th>
+					</tr>
+				</thead>
+				<tbody id="tablebody">
+					<!-- Aqui va el contenido de la tabla -->
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</body>
+</html>
